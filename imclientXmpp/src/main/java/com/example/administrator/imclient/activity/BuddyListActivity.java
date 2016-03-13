@@ -40,6 +40,7 @@ public class BuddyListActivity extends BaseActivity {
 			@Override
 			public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
 				if(adapter!=null){
+
 					RosterEntry entry = (RosterEntry) adapter.getChild(groupPosition, childPosition);
 					String nick = entry.getName();
 					String userID = entry.getUser();

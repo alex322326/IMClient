@@ -30,8 +30,7 @@ public class LoginActivity extends BaseActivity {
 		new Thread(){
 
 			public void run() {
-				ConnectionConfiguration config = new ConnectionConfiguration("10.0.2.2", 5222, "itheima.com");
-				//���ÿ��Ե���  ������logcat��������˺Ϳͻ���֮��ͨѶ��xmpp��Ϣ������
+				ConnectionConfiguration config = new ConnectionConfiguration("10.0.2.2", 5222, "alex.localhost.com");
 				config.setDebuggerEnabled(true);
 				connection = new XMPPConnection(config);
 				try {
@@ -53,10 +52,8 @@ public class LoginActivity extends BaseActivity {
 				public void run() {
 					try {
 						connection.login(account, password);
-						//��¼�ɹ�
 						isLoginSuccess = true;
 					} catch (XMPPException e) {
-						//��¼ʧ�ܻ����쳣 
 						isLoginSuccess = false;
 						e.printStackTrace();
 					}
@@ -65,15 +62,13 @@ public class LoginActivity extends BaseActivity {
 						@Override
 						public void run() {
 							if(isLoginSuccess){
-								//��¼�ɹ� ��ת�������б�ҳ��
 								myapp.setConnection(connection);
 								myapp.setMyAccout(account);
 								startService(new Intent(getApplicationContext(),ChatService.class));
-								Toast.makeText(getApplicationContext(), "��¼�ɹ�!", Toast.LENGTH_SHORT).show();
+								Toast.makeText(getApplicationContext(), "success", Toast.LENGTH_SHORT).show();
 								startActivity(new Intent(getApplicationContext(),BuddyListActivity.class));
 							}else{
-								//��¼ʧ��
-								Toast.makeText(getApplicationContext(), "��¼ʧ��!", Toast.LENGTH_SHORT).show();
+								Toast.makeText(getApplicationContext(), "failed", Toast.LENGTH_SHORT).show();
 							}
 							
 						}
