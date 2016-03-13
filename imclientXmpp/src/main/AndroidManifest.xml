@@ -18,6 +18,7 @@
             android:label="@string/app_name" >
             
         </activity>
+
         <activity android:name="com.example.administrator.imclient.activity.SplashActivity"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
             <intent-filter>
